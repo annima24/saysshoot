@@ -8,16 +8,28 @@ computerPlay = () =>    {
     return (choices[random]);
     
 }  
+// Takes two values and compares them and returns a winner based on the ancient rules
 const playRound = (playerSelection, computerSelection) =>   {
-    if  (  playerSelection === 'Rock' && computerSelection ==='Rock'
-    || playerSelection === 'Paper' && computerSelection ==='Paper'
-    || playerSelection === 'Scissor' && computerSelection ==='Scissor')            
+    if  (playerSelection === 'Rock' && computerSelection ==='Rock'
+    ||   playerSelection === 'Paper' && computerSelection ==='Paper'
+    ||   playerSelection === 'Scissor' && computerSelection ==='Scissor')            
     {
-        return (computerSelection, 'its a tie');
-    } else return (computerSelection, 'something else')
+        return ('its a tie');
+    }   else if  
+        (playerSelection === 'Rock' && computerSelection ==='Scissor'
+    ||   playerSelection === 'Paper' && computerSelection ==='Rock'
+    ||   playerSelection === 'Scissor' && computerSelection ==='Paper')            
+    {
+        return ('You Win');
+    }   else  
+        (playerSelection === 'Scissor' && computerSelection ==='Rock'
+    ||   playerSelection === 'Rock' && computerSelection ==='Paper'
+    ||   playerSelection === 'Paper' && computerSelection ==='Scissor')            
+    {
+    return ('You Lose');
+};
 }
 
 const playerSelection = 'Rock'
 const computerSelection = computerPlay();
 console.log(playRound(playerSelection, computerSelection));
-
