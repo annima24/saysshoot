@@ -30,6 +30,7 @@ const playRound = (playerSelection, computerSelection) =>   {
 };
 }
 
-const playerSelection = 'Rock'
+
+const playerSelection = prompt("Enter selection")
 const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+console.log(playRound(playerSelection, computerSelection),', I chose' ,computerSelection);
