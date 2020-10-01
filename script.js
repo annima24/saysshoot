@@ -50,10 +50,10 @@ const game = () =>  {
     playRound('', computerPlay)
     playRound('', computerPlay)
   if (playerScore>computerScore)  {
-    return ("After 5 rounds, you are victorious!")
+    return (`After 5 rounds you had ${playerScore} wins, and your opponent had ${computerScore} you have crushed the enemy and stand victorious!`)
 }   else if (playerScore<computerScore) {
-    return ("After 5 rounds, the machines have won, you have failed the human race.")
-}   else return ("After 5 rounds, it's a tie!")
+    return (`After 5 rounds you had ${playerScore} wins, and your opponent had ${computerScore} wins, the machines have won, you have failed the human race.`)
+}   else return (`After 5 rounds you had ${playerScore} wins, and your opponent had ${computerScore} wins, it's a tie!`)
 }
 
 
