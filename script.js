@@ -1,6 +1,8 @@
-// This function will return a random value of either Rock, Paper, or Scissor
+// This function will return a random value of either rock, paper, or scissor
 
-const choices = ['Rock', 'Paper', 'Scissor']
+const choices = ['rock', 'paper', 'scissor']
+let playerScore = 0
+let computerScore = 0
 
 computerPlay = () =>    {
     // Cycles through the choices array and returns a random choice
@@ -10,27 +12,50 @@ computerPlay = () =>    {
 }  
 // Takes two values and compares them and returns a winner based on the ancient rules
 const playRound = (playerSelection, computerSelection) =>   {
-    if  (playerSelection === 'Rock' && computerSelection ==='Rock'
-    ||   playerSelection === 'Paper' && computerSelection ==='Paper'
-    ||   playerSelection === 'Scissor' && computerSelection ==='Scissor')            
+    // calls for user to input their selection
+    let userChoice= prompt('Choose either Rock, Paper, or Scissor');
+    // storing prompt results in a variable
+    let userChoiceResults = userChoice
+    // formatting to lowercase
+    playerSelection =userChoiceResults.toLowerCase();
+    // running computerPlay function and storing the result
+    computerSelection = computerPlay();
+    // checking conditions to see if it's a tie
+    if  (playerSelection === 'rock' && computerSelection ==='rock'
+    ||   playerSelection === 'paper' && computerSelection ==='paper'
+    ||   playerSelection === 'scissor' && computerSelection ==='scissor')            
     {
-        return ('its a tie');
+        return (console.log('The computer chose '+computerSelection+', and you chose '+playerSelection+ ', so its a tie!'));
+        // checking conditions to see if player wins
     }   else if  
-        (playerSelection === 'Rock' && computerSelection ==='Scissor'
-    ||   playerSelection === 'Paper' && computerSelection ==='Rock'
-    ||   playerSelection === 'Scissor' && computerSelection ==='Paper')            
+        (playerSelection === 'rock' && computerSelection ==='scissor'
+    ||   playerSelection === 'paper' && computerSelection ==='rock'
+    ||   playerSelection === 'scissor' && computerSelection ==='paper')            
     {
-        return ('You Win');
-    }   else  
-        (playerSelection === 'Scissor' && computerSelection ==='Rock'
-    ||   playerSelection === 'Rock' && computerSelection ==='Paper'
-    ||   playerSelection === 'Paper' && computerSelection ==='Scissor')            
+        return (console.log('The computer chose '+computerSelection+', and you chose '+playerSelection+ ', so you win!'), playerScore++);
+        // checking conditions to see if player loses
+    }   else if  
+        (playerSelection === 'scissor' && computerSelection ==='rock'
+    ||   playerSelection === 'rock' && computerSelection ==='paper'
+    ||   playerSelection === 'paper' && computerSelection ==='scissor')            
     {
-    return ('You Lose');
-};
+    return (console.log('The computer chose '+computerSelection+', and you chose '+playerSelection+ ', so you lose!'), computerScore++);
+}   else return (console.log('an error occured'))
+}
+// game function which takes two paramaters, and after 5 rounds returns the winner
+const game = () =>  {
+    playRound('', computerPlay)
+    playRound('', computerPlay)
+    playRound('', computerPlay)
+    playRound('', computerPlay)
+    playRound('', computerPlay)
+  if (playerScore>computerScore)  {
+    return ("After 5 rounds, you are victorious!")
+}   else if (playerScore<computerScore) {
+    return ("After 5 rounds, the machines have won, you have failed the human race.")
+}   else return ("After 5 rounds, it's a tie!")
 }
 
 
-const playerSelection = prompt("Enter selection")
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection),', I chose' ,computerSelection);
+console.log(game());
+
